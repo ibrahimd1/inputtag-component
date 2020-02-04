@@ -5,6 +5,7 @@
       :key="index"
       :tag="tag"
       :index="index"
+      :tagColor="color"
       @removeOneTagEvent="removeOneTag($event)"
     ></app-tag>
     <input type="text" @keydown.enter="addTag" @keydown.backspace="removeTag" />
@@ -58,7 +59,12 @@ export default {
   },
   props: {
     value: {
-      requires: false
+      required: false
+    },
+    color: {
+      type: String,
+      required: false,
+      default: "primary"
     }
   },
   created() {

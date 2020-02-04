@@ -1,5 +1,5 @@
 <template>
-  <span class="tag">
+  <span class="tag" :class="selectedTheme">
     <span class="content">{{ tag }}</span>
     <span class="close" @click="removeThisTag(index)">X</span>
   </span>
@@ -7,7 +7,15 @@
 
 <script>
 export default {
-  props: ["tag", "index"],
+  props: ["tag", "index", "tagColor"],
+  data() {
+    return {
+      selectedTheme: null
+    };
+  },
+  created() {
+    this.selectedTheme = this.tagColor;
+  },
   methods: {
     removeThisTag(index) {
       this.$emit("removeOneTagEvent", index);
@@ -17,12 +25,47 @@ export default {
 </script>
 
 <style scoped>
+.success {
+  background-color: #d5eddb;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.primary {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+
+.secondary {
+  color: #383d41;
+  background-color: #e2e3e5;
+  border-color: #d6d8db;
+}
+
+.info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
 .tag {
-  background-color: #fbdd08;
   padding: 10px;
-  color: #000;
   cursor: default;
   margin-right: 10px;
+  border-radius: 5px;
 }
 
 .tag * {

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <app-tags v-model="tags"></app-tags>
+    <app-tags v-model="tags" color="success"></app-tags>
     {{ tags }}
   </div>
 </template>
